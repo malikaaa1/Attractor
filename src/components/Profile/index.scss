@@ -1,0 +1,41 @@
+.form{
+    background: #ffffff;
+    box-shadow: 5px 10px 50px rgba(59, 58, 57, 0.26);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 56px;
+    .crop {
+        width: 100%;
+        height: fit-content;
+        overflow: hidden;
+        text-align: start;
+        margin-right: 40px;
+        img {
+          border-radius: 50%;
+          max-width: 100%;
+          width: 400px;
+          height: 400px;
+          object-fit: cover;
+        }
+      }
+    h1{
+        font-size: 35px !important;
+        font-weight: bold;
+    }
+    textarea{
+        width: 500px;
+        height: 40px;
+        font-size: 20px;
+        padding-top: 5px;
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+    input{
+        width: 500px;
+        height: 40px;
+        margin-bottom: 10px; 
+        border-radius: 5px; 
+        font-size: 17px;
+  }
+}

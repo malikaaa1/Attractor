@@ -1,11 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Profile from './components/Profile/index'
+import Auth from './components/Auth/Auth'
 
-const App = () => {
+function App() {
   return (
-    <div>
-      
-    </div>
-  );
-};
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/about" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
-export default App;
+export default App

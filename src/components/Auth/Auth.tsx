@@ -14,7 +14,7 @@ const Auth = () => {
     
             fetch("https://api.github.com/user", {
                 headers: {
-                    'Authorization': 'token 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 '
+                    'Authorization': 'token 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 '
                 }
             })
                 .then(function (data) {
@@ -59,9 +59,10 @@ const Auth = () => {
             required
           />
         </div>  
-    <div >
+    <div style={{marginBottom:"60px"}} >
             <button >SignIn</button>
-        </div>    
+        </div> 
+        Если не зайдет пожалуйста  🙏 зайдите через /about            
       </form>
       <div id="result"></div>
     </div>

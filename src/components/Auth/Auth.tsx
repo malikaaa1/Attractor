@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from "jquery";
-
+import './Auth.scss'
 
 const Auth = () => {
     $(document).ready(function () {
@@ -10,11 +10,11 @@ const Auth = () => {
             let password = $("#password").val()
     
             let headers = btoa(username + ":" + password);
-    
+    console.log(headers)
     
             fetch("https://api.github.com/user", {
                 headers: {
-                    'Authorization': 'token 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 '
+                    'Authorization': 'token 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 '
                 }
             })
                 .then(function (data) {
@@ -28,7 +28,7 @@ const Auth = () => {
                     }
                     else {
                        
-                        let result = `<img ml-4" width="100" height="100" src="${data.avatar_url}"/><br><h1>${data.login}</h1><br><a href="/about" element={Profile/}><button> See Profile </button></a>`
+                        let result = `<img ml-4" width="100" height="100" src="${data.avatar_url}"/><br><h1>${data.login}</h1><br><a href="/about" element={Profile/}><button> LET'S GO </button></a>`
                         $("#result").html(result)
                        
                     }
@@ -48,6 +48,7 @@ const Auth = () => {
             id="username"
             placeholder="username"
             required
+
           />
         </div>
         <div >
@@ -57,18 +58,10 @@ const Auth = () => {
             placeholder="password"
             required
           />
-        </div>
-    
-
+        </div>  
     <div >
-     
             <button >SignIn</button>
-      
-  
-        </div>
-    
-        
-          
+        </div>    
       </form>
       <div id="result"></div>
     </div>

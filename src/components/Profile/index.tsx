@@ -1,99 +1,43 @@
-import React,{useState} from 'react';
+import React, { useState, FormEvent } from 'react';
 import "./index.scss"
-import $, { data } from "jquery";
+import $ from "jquery"
+
 
 
 const Profile = () => {
-  const [data, setData] = useState(false);
-  const men = "https://api.github.com/user"
   $(document).ready(function () {
     $("#form").submit(function (event) {
-        event.preventDefault()
-      
-        fetch("https://api.github.com/user", {
-            headers: {
-                'Authorization': 'token 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 '
-            }
+      event.preventDefault()
+
+      fetch("https://api.github.com/user", {
+        headers: {
+          'Authorization': 'token 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 '
+        }
+      })
+        .then(function (data) {
+          return data.json()
         })
-            .then(function (data) {
-            return data.json()
-            })
-            .then(function (data) {
-                if (data.message == "Bad credentials") {
-                    alert("wrong credentials")
-                }
-                else {
-                   
-                    return
-                   
-                }
-                console.log(data)
+        .then(function (data) {
+
+          let result = `<img  class="img-thumbnail ml-4" width="100" height="100" src="${data.avatar_url}"/><h3>${data.name}</h3><h3>${data.bio}</h3><h3>${data.login}</h3><hr><h3>${data.company}</h3><a href="${data.html_url}">${data.html_url}</a><h3>${data.location}</h3><a target="_blank" href="${data.html_url}"><button class="btn btn-success">See Profile on  GITHUB </button></a>`
+          $("#result").html(result)
+          console.log(data)
         })
     })
-
-
-})
+  })
   return (
-    <form className="form">
-      <div className="crop">
-        <img
-          src={`${data.avatar_url}`}
-          alt='avatar'
-        />
+    <>
+      <div>
+        <h1>Github Authentication</h1>
+        <div id="message"></div>
+        <form id="form" autoComplete="off">
+          <div >
+            <button id="result">SEE PROFILE</button>
+          </div>
+        </form>
+        <div id="result"></div>
       </div>
-      <h1 className="form">
-        Profile
-      </h1>
-      Name
-      <input
-        id="name"
-        name='name'
-        placeholder='Name'
-
-
-      />
-      <textarea
-        id='bio'
-        name='bio'
-        placeholder='Bio'
-        rows={1}
-      />
-      <h6>You can @mention other users and organizations to link to them</h6>
-      <input
-        id='company'
-        name='company'
-        placeholder='Company'
-
-      />
-      <input
-        id='location'
-        name='location'
-        placeholder='Location'
-
-      />
-
-      <input
-        id='website'
-        name='website'
-        placeholder='Website'
-
-      />
-      <input
-        id='img'
-        name='img'
-        placeholder='Photo'
-
-      />
-      <input
-        id='profile'
-        name='profile'
-        placeholder='Profile'
-
-      />
-      <button onClick={() => console.log('send')} >
-        Добавить
-      </button>
-    </form>
+    </>
   );
 };
 
